@@ -65,7 +65,7 @@ deepspeed --include localhost:0 train.py \
 
 在 `per_device_train_batch_size=1`、`gradient_accumulation_steps=16`、`max_input_length=200`、`max_output_length=768`、`fp16=false` 的配置下，单卡需要14G 显存可对 bloom-396m-zh 进行微调。训练过程中的 loss 变化如下图所示：
 
-
+<img src="images/loss.png" width="600">
 
 ## 推理
 
