@@ -10,7 +10,8 @@ BLOOM 模型支持中文、英文、代码、法语、西班牙语。训练数�
 
 链接：https://huggingface.co/bigscience/bloom-560m
 
-[LLMPruner](https://github.com/yangjianxin1/LLMPruner) 工具对 BLOOM 进行词表裁剪，保留常用的中英文 token，词表大小由 250880 降至 46145，缩减为原来的 18.39%，在后续微调过程中可以减少显存占用。词表裁剪后的模型链接：https://huggingface.co/YeungNLP/bloom-396m-zh
+[LLMPruner](https://github.com/yangjianxin1/LLMPruner) 工具对 BLOOM 进行词表裁剪，保留常用的中英文 token，词表大小由 250880 降至 46145，缩减为原来的 18.39%，在后续微调过程中可以减少显存占用。
+词表裁剪后的模型链接：https://huggingface.co/YeungNLP/bloom-396m-zh
 
 ## 数据
 
