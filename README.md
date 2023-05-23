@@ -6,9 +6,7 @@
 
 BLOOM 模型支持中文、英文、代码、法语、西班牙语。训练数据的具体语言占比如下：
 
-<div align=center>
 <img src="images/langs.png" width="400">
-</div>
 
 链接：https://huggingface.co/bigscience/bloom-560m
 
@@ -36,7 +34,7 @@ python sample_data.py \
 
 输出部分的长度分布如下图所示（若输出长度超过2048，则设置为2048）：
 
-
+<img src="images/dist.png" width="400">
 
 可以构建自己的指令数据集进行训练。
 
