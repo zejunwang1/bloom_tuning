@@ -107,7 +107,7 @@ python chat.py \
   year = {2023},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/zejunwang1/bloom_tuning}},
+  howpublished = {\url{https://github.com/zejunwang1/bloom_tuning}}
 }
 ```
 
