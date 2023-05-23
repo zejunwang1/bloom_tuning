@@ -73,11 +73,11 @@ deepspeed --include localhost:0 train.py \
 
 微调后的模型已上传至 huggingface: [bloom-396m-chat](https://huggingface.co/WangZeJun/bloom-396m-chat)
 
-可以通过如下代码调用 bloom-396m-chat 模型来生成对话：
+可以通过如下代码调用 [bloom-396m-chat](https://huggingface.co/WangZeJun/bloom-396m-chat) 模型来生成对话：
 ```python
 from transformers import BloomTokenizerFast, BloomForCausalLM
 
-model_name_or_path = "output/checkpoint-31200/"
+model_name_or_path = "WangZeJun/bloom-396m-chat"
 
 tokenizer = BloomTokenizerFast.from_pretrained(model_name_or_path)
 model = BloomForCausalLM.from_pretrained(model_name_or_path).cuda()
