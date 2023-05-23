@@ -6,7 +6,7 @@
 
 BLOOM 模型支持中文、英文、代码、法语、西班牙语。训练数据的具体语言占比如下：
 
-<img src="images/langs.png" width="500">
+<img src="images/langs.png" width="400">
 
 链接：https://huggingface.co/bigscience/bloom-560m
 
