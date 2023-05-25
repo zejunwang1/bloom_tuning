@@ -42,7 +42,7 @@ python sample_data.py \
 
 ## 指令微调
 
-基于 deepspeed ZeRO-Stage 2 进行指令微调训练：
+基于 deepspeed ZeRO-Stage 2 (未启用 offload_optimizer) 进行指令微调训练：
 
 ```shell
 deepspeed --include localhost:0 train.py \
@@ -65,7 +65,7 @@ deepspeed --include localhost:0 train.py \
 --fp16 False
 ```
 
-在 `per_device_train_batch_size=1`、`gradient_accumulation_steps=16`、`max_input_length=200`、`max_output_length=768`、`fp16=false` 的配置下，单卡需要14G 显存可对 bloom-396m-zh 进行微调。训练过程中的 loss 变化如下图所示：
+在 `per_device_train_batch_size=1`、`gradient_accumulation_steps=16`、`max_input_length=200`、`max_output_length=768`、`fp16=false` 的配置下，单卡需要 14G 显存可对 bloom-396m-zh 进行微调。建议启用 offload_optimizer 和设置 `fp16=true` 进一步降低显存占用。训练过程中的 loss 变化如下图所示：
 
 <img src="images/loss.png" width="700">
 
