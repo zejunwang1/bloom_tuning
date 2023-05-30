@@ -42,6 +42,29 @@ python sample_data.py \
 
 ## 指令微调
 
+单卡进行指令微调：
+
+```shell
+export CUDA_VISIBLE_DEVICES=0
+python train.py \
+--model_name_or_path /path/to/bloom \
+--data_path data/train.jsonl \
+--max_input_length 200 \
+--max_output_length 768 \
+--output_dir output \
+--per_device_train_batch_size 1 \
+--gradient_accumulation_steps 16 \
+--learning_rate 3e-5 \
+--num_train_epochs 2 \
+--lr_scheduler_type "cosine" \
+--warmup_steps 2000 \
+--logging_steps 10 \
+--save_strategy "steps" \
+--save_steps 200 \
+--save_total_limit 1 \
+--fp16 False
+```
+
 基于 deepspeed ZeRO-Stage 2 (未启用 offload_optimizer - CPU) 进行指令微调训练：
 
 ```shell
@@ -65,7 +88,7 @@ deepspeed --include localhost:0 train.py \
 --fp16 False
 ```
 
-在 `per_device_train_batch_size=1`、`gradient_accumulation_steps=16`、`max_input_length=200`、`max_output_length=768`、`fp16=false` 的配置下，单卡需要 14G 显存对 bloom-396m-zh 进行微调。建议启用 offload_optimizer (Enable offloading of optimizer state and optimizer computation to CPU) 和设置 `fp16=true` 进一步降低显存占用。训练过程中的 loss 变化如下图所示：
+在 `per_device_train_batch_size=1`、`gradient_accumulation_steps=16`、`max_input_length=200`、`max_output_length=768`、`fp16=false` 的配置下，需要约 14G 显存对 bloom-396m-zh 进行微调。建议启用 offload_optimizer (Enable offloading of optimizer state and optimizer computation to CPU) 和设置 `fp16=true` 进一步降低显存占用。训练过程中的 loss 变化如下图所示：
 
 <img src="images/loss.png" width="700">
 
