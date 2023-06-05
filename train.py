@@ -5,7 +5,6 @@ import torch
 import transformers
 from datasets import load_dataset
 from dataclasses import dataclass, field
-from typing import Optional
 from transformers import (
     BloomForCausalLM, 
     BloomTokenizerFast,
@@ -30,7 +29,7 @@ class DataArguments:
 
 @dataclass
 class TrainingArguments(transformers.TrainingArguments):
-    cache_dir: Optional[str] = field(default=None)
+    cache_dir: str = field(default=None)
     optim: str = field(default="adamw_torch")
 
 
