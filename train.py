@@ -16,7 +16,7 @@ from transformers import (
 
 @dataclass
 class ModelArguments:
-    model_name_or_path: Optional[str] = field(default="YeungNLP/bloom-1b4-zh")
+    model_name_or_path: str = field(metadata={"help": "HuggingFace model name or path."})
 
 
 @dataclass
