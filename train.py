@@ -71,11 +71,13 @@ def build_dataset(data_or_path, tokenizer, max_input_length=128, max_output_leng
             
         q_ids = tokenizer(question, truncation=True, 
                 max_length=max_input_length).input_ids
-        a_ids = tokenizer(answer, truncation=True, 
-                max_length=max_output_length).input_ids
-        input_ids = q_ids + [tokenizer.eos_token_id] + a_ids + [tokenizer.eos_token_id]
+        a_ids = tokenizer(answer).input_ids
+        a_ids += [tokenizer.eos_token_id]
+        if len(a_ids) > max_output_length:
+            a_ids = a_ids[: max_output_length]
+        input_ids = q_ids + [tokenizer.eos_token_id] + a_ids
         question_length = len(q_ids) + 1
-        labels = [-100] * question_length + input_ids[question_length:]
+        labels = [-100] * question_length + a_ids
         return dict(input_ids=input_ids, labels=labels)
     
     return data.map(tokenize_function, remove_columns=column_names)
