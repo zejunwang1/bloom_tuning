@@ -31,8 +31,10 @@ def main(args):
             eos_token_id=tokenizer.eos_token_id
         )
         
-        output = tokenizer.decode(outputs[0])
-        print("Assistant: {}\n".format(output.replace(text, "").replace('</s>', ""))) 
+        input_ids_len = input_ids.size(1)
+        response_ids = outputs[0][input_ids_len:]
+        response = tokenizer.decode(response_ids)
+        print("Assistant: {}\n".format(response.strip().replace('</s>', "")))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
